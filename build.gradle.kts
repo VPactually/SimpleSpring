@@ -51,7 +51,10 @@ dependencies {
 
     testImplementation("org.projectlombok:lombok:1.18.32")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.32")
-
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.8")
+    testImplementation("org.testcontainers:postgresql:1.19.8")
+    testImplementation("org.testcontainers:testcontainers:1.19.8")
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.2.2")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

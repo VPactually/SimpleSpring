@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vpactually.dto.taskStatuses.TaskStatusUpdateDTO;
 import com.vpactually.entities.TaskStatus;
 import com.vpactually.repositories.TaskStatusRepository;
+import com.vpactually.util.ContainerUtil;
 import com.vpactually.util.ModelGenerator;
 import org.instancio.Instancio;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -42,6 +47,16 @@ public class TaskStatusesControllerTest {
     public void setUp() {
         testTaskStatus = Instancio.of(modelGenerator.getTaskStatusModel()).create();
         taskStatusRepository.save(testTaskStatus);
+    }
+
+    @BeforeAll
+    public static void beforeAll() throws SQLException {
+        ContainerUtil.run();
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        ContainerUtil.stop();
     }
 
     @Test
