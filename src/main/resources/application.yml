@@ -1,9 +1,7 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/springdb
-    username: postgres
-    password: postgres
+  profiles:
+      active: ${SPRING_PROFILES_ACTIVE}
+      default: dev
   jpa:
     generate-ddl: true
     show-sql: true
