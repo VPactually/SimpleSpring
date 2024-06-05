@@ -11,11 +11,8 @@ import com.vpactually.repositories.LabelRepository;
 import com.vpactually.repositories.TaskRepository;
 import com.vpactually.repositories.TaskStatusRepository;
 import com.vpactually.repositories.UserRepository;
-import com.vpactually.util.ContainerUtil;
 import com.vpactually.util.ModelGenerator;
 import org.instancio.Instancio;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -84,15 +81,6 @@ public class LabelsControllerTest {
         labelRepository.save(testLabel);
     }
 
-    @BeforeAll
-    public static void beforeAll() throws SQLException {
-        ContainerUtil.run();
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        ContainerUtil.stop();
-    }
 
     @Test
     public void showTest() throws Exception {

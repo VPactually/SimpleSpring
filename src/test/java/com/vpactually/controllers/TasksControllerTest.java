@@ -9,11 +9,8 @@ import com.vpactually.entities.User;
 import com.vpactually.repositories.TaskRepository;
 import com.vpactually.repositories.TaskStatusRepository;
 import com.vpactually.repositories.UserRepository;
-import com.vpactually.util.ContainerUtil;
 import com.vpactually.util.ModelGenerator;
 import org.instancio.Instancio;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +19,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.SQLException;
 
 import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -70,16 +65,6 @@ public class TasksControllerTest {
         testTask.setTaskStatus(testTaskStatus);
         testTask.setAssignee(testUser);
         taskRepository.save(testTask);
-    }
-
-    @BeforeAll
-    public static void beforeAll() throws SQLException {
-        ContainerUtil.run();
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        ContainerUtil.stop();
     }
 
     @Test
